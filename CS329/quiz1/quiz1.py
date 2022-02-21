@@ -64,7 +64,6 @@ def normalize(text):
         else:
             result.append(words[i])
             i += 1
-
     k = 0
     result2 = []
     while (k < len(result)):
@@ -73,38 +72,23 @@ def normalize(text):
         verify2 = next((t for t in teens if result[k] == t[1]), None)
         verify3 = next((t for t in numbers2 if result[k] == t[1]), None)
         verify4 = next((t for t in numbers3 if result[k] == t[1]), None)
-
         if verify4:
             if result[k] == '1000000':
                 if not result[k + 1].isnumeric():
                     result2.append('000000')
-
                 elif '1000' not in result:
                     result2.append('000')
-
-
-
             elif result[k] == '1000':
                 if not result[k + 1].isnumeric():
                     result2.append('000')
-
-
-
-
-
             elif result[k] == '1000000000':
                 if not result[k + 1].isnumeric():
                     result2.append('000000000')
-
                 elif '1000000' not in result:
                     result2.append('000')
-
-
-
             elif result[k] == '100':
                 if not result[k + 1].isnumeric():
                     result2.append('00')
-
             k += 1
         elif verify3:
             addthis = str(verify3[1])
@@ -122,30 +106,25 @@ def normalize(text):
             else:
                 result2.append(addthis)
                 k += 1
-
         elif verify2:
             addthis = verify2[1]
             result2.append(addthis)
             k += 1
-
         elif verify1:
             addthis = verify1[1]
             if result[k - 1] in big and result[k + 1] != '100':
                 addthis = '00' + addthis
                 result2.append(addthis)
                 k += 1
-
             else:
                 result2.append(addthis)
                 k += 1
-
         elif result[k] == 'a' and result[k + 1] in big:
             result2.append('1')
             k += 1
         else:
             result2.append(result[k])
             k += 1
-
     j = 0
     answer = ''
     while (j < len(result2) - 1):
@@ -158,9 +137,7 @@ def normalize(text):
         else:
             answer += result2[j]
             j += 1
-
     answer += result2[j]
-
     return answer
 
 
