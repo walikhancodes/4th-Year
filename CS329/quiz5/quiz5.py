@@ -69,7 +69,6 @@ def match(AC: ahocorasick.Automaton, tokens: List[str]) -> List[Tuple[str, int, 
         idx += len(token)
         emap[idx] = i
         idx += 1
-
     # find matches
     text = ' '.join(tokens)
     spans = []
